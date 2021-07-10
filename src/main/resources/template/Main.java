@@ -24,7 +24,8 @@ public class Main {
     private final InputStream in;
     private final PrintStream out;
     
-    private Main(final Boolean sample, final InputStream in, final PrintStream out) {
+    public Main(
+            final Boolean sample, final InputStream in, final PrintStream out) {
         this.sample = sample;
         this.in = in;
         this.out = out;
@@ -68,9 +69,11 @@ public class Main {
         final InputStream is;
         final PrintStream out;
         final ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        long timerStart = 0;
         if (sample) {
             is = Main.class.getResourceAsStream("sample.in");
             out = new PrintStream(baos, true);
+            timerStart = System.nanoTime();
         } else {
             is = System.in;
             out = System.out;
@@ -79,6 +82,19 @@ public class Main {
         new Main(sample, is, out).solve();
     	
         if (sample) {
+            final long timeSpent = (System.nanoTime() - timerStart) / 1_000;
+            final double time;
+            final String unit;
+            if (timeSpent < 1_000) {
+                time = timeSpent;
+                unit = "µs";
+            } else if (timeSpent < 1_000_000) {
+                time = timeSpent / 1_000.0;
+                unit = "ms";
+            } else {
+                time = timeSpent / 1_000_000.0;
+                unit = "s";
+            }
             final Path path
                     = Paths.get(Main.class.getResource("sample.out").toURI());
             final List<String> expected = Files.readAllLines(path);
@@ -88,6 +104,7 @@ public class Main {
                         "Expected %s, got %s", expected, actual));
             }
             actual.forEach(System.out::println);
+            System.out.println(String.format("took: %.3f %s", time, unit));
         }
     }
 
@@ -100,6 +117,29 @@ public class Main {
 
         public Result(final int caseNumber, final List<T> values) {
             this.values = values;
+        }
+    }
+    
+    @SuppressWarnings("unused")
+    private static final class Pair<L, R> {
+        private final L one;
+        private final R two;
+
+        private Pair(final L one, final R two) {
+            this.one = one;
+            this.two = two;
+        }
+
+        public static <L, R> Pair<L, R> of(final L one, final R two) {
+            return new Pair<>(one, two);
+        }
+
+        public L getOne() {
+            return one;
+        }
+        
+        public R getTwo() {
+            return two;
         }
     }
 }
