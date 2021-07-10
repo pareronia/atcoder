@@ -15,13 +15,10 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Deque;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
-import java.util.Set;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 
@@ -45,59 +42,48 @@ public class Main {
         System.out.println(supplier.get());
     }
     
-    private void addRoad(final Map<Integer, Set<Integer>> roads, final int a, final int b) {
-        roads.merge(
-                a,
-                new HashSet<>(Set.of(b)),
-                (v1, v2) -> {
-                    v1.addAll(v2);
-                    return v1;
-                });
-    }
-    
-    private List<Integer> findShortestPath(final Map<Integer, Set<Integer>> roads, final int from, final int to) {
-        final Deque<List<Integer>> queue = new ArrayDeque<>();
-        queue.add(new ArrayList<>(List.of(from)));
-        final Set<Integer> seen = new HashSet<>();
-        List<Integer> t = null;
+    private int[] colorTowns(final ArrayList<Integer>[] roads) {
+        final Deque<Integer> queue = new ArrayDeque<>();
+        queue.add(0);
+        final int[] colors = new int[roads.length];
+        Arrays.fill(colors, -1);
+        colors[0] = 0;
         while (!queue.isEmpty()) {
-            t = queue.poll();
-            if (seen.contains(t.get(0))) {
-                continue;
-            }
-            if (t.get(0) == to) {
-                break;
-            }
-            seen.add(t.get(0));
-            for (final Integer n : roads.get(t.get(0))) {
-                if (!seen.contains(n)) {
-                    final List<Integer> l = new ArrayList<>(t);
-                    l.add(0, n);
-                    queue.add(l);
+            final Integer t = queue.poll();
+            for (final Integer n : roads[t]) {
+                if (colors[n] == -1) {
+                    colors[n] = 1 - colors[t];
+                    queue.add(n);
                 }
             }
         }
-        return t;
+        return colors;
     }
     
+    @SuppressWarnings("unchecked")
     private Result<?> handleTestCase(final Scanner sc, final Integer i) {
         final int n = sc.nextInt();
         final int q = sc.nextInt();
-        final Map<Integer, Set<Integer>> roads = new HashMap<>();
+        final ArrayList<Integer>[] roads = new ArrayList[n];
+        for (int j = 0; j < n; j++) {
+            roads[j] = new ArrayList<>();
+        }
         for (int j = 0; j < n - 1; j++) {
             final int a = sc.nextInt();
             final int b = sc.nextInt();
-            addRoad(roads, a, b);
-            addRoad(roads, b, a);
+            roads[a - 1].add(b - 1);
+            roads[b - 1].add(a - 1);
         }
-        log(() -> roads);
+        final int[] colors = colorTowns(roads);
         final List<String> ans = new ArrayList<>();
         for (int j = 0; j < q; j++) {
             final int c = sc.nextInt();
             final int d = sc.nextInt();
-            final List<Integer> path = findShortestPath(roads, c, d);
-            log(() -> c + "," + d + ": " + path);
-            ans.add(path.size() % 2 == 1 ? "Town" : "Road");
+            if (colors[c - 1] == colors[d - 1]) {
+                ans.add("Town");
+            } else {
+                ans.add("Road");
+            }
         }
         return new Result<>(
                 i,
@@ -130,9 +116,11 @@ public class Main {
         final InputStream is;
         final PrintStream out;
         final ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        long timerStart = 0;
         if (sample) {
             is = Main.class.getResourceAsStream("sample.in");
             out = new PrintStream(baos, true);
+            timerStart = System.nanoTime();
         } else {
             is = System.in;
             out = System.out;
@@ -141,6 +129,19 @@ public class Main {
         new Main(sample, is, out).solve();
     	
         if (sample) {
+            final long timeSpent = (System.nanoTime() - timerStart) / 1_000;
+            final double time;
+            final String unit;
+            if (timeSpent < 1_000) {
+                time = timeSpent;
+                unit = "µs";
+            } else if (timeSpent < 1_000_000) {
+                time = timeSpent / 1_000.0;
+                unit = "ms";
+            } else {
+                time = timeSpent / 1_000_000.0;
+                unit = "s";
+            }
             final Path path
                     = Paths.get(Main.class.getResource("sample.out").toURI());
             final List<String> expected = Files.readAllLines(path);
@@ -150,6 +151,7 @@ public class Main {
                         "Expected %s, got %s", expected, actual));
             }
             actual.forEach(System.out::println);
+            System.out.println(String.format("took: %.3f %s", time, unit));
         }
     }
 
@@ -163,10 +165,5 @@ public class Main {
         public Result(final int caseNumber, final List<T> values) {
             this.values = values;
         }
-    }
-    
-    private static final class Node {
-
-        
     }
 }
