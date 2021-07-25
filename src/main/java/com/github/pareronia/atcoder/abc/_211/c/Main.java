@@ -2,7 +2,6 @@ package com.github.pareronia.atcoder.abc._211.c;
 
 import static java.util.Arrays.asList;
 import static java.util.stream.Collectors.joining;
-import static java.util.stream.Collectors.summingLong;
 import static java.util.stream.Collectors.toList;
 
 import java.io.ByteArrayOutputStream;
@@ -14,10 +13,7 @@ import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Scanner;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
@@ -51,100 +47,20 @@ public class Main {
     
     private Result<?> handleTestCase(final Scanner sc, final Integer i) {
         final String s = sc.next();
-        final Map<Pair<Integer, Integer>, Long> map = new HashMap<>();
-        int prevMapSize = 0;
-        for (int j = s.length() - 1; j >= 0; j--) {
-            if (s.charAt(j) == 'i') {
-                map.put(Pair.of(1, j), 1L);
+        final char[] ch = "chokudai".toCharArray();
+        final int[] dp = new int[ch.length];
+        for (int j = 0; j < s.length(); j++) {
+            for (int k = 0; k < ch.length; k++) {
+                if (s.charAt(j) == ch[k]) {
+                    final int prev = k == 0 ? 1 : dp[k - 1];
+                    dp[k] = (int) ((dp[k] + prev) % MOD);
+                }
             }
         }
-        if (map.size() == prevMapSize) {
-            return new Result<>(i, List.of(0));
-        }
-        prevMapSize = map.size();
-        for (int j = s.length() - 2; j >= 0; j--) {
-            final int jj = j;
-            if (s.charAt(j) == 'a') {
-                map.put(Pair.of(2, j), dp(map, 1, jj));
-            }
-        }
-        if (map.size() == prevMapSize) {
-            return new Result<>(i, List.of(0));
-        }
-        prevMapSize = map.size();
-        for (int j = s.length() - 3; j >= 0; j--) {
-            final int jj = j;
-            if (s.charAt(j) == 'd') {
-                map.put(Pair.of(3, j), dp(map, 2, jj));
-            }
-        }
-        if (map.size() == prevMapSize) {
-            return new Result<>(i, List.of(0));
-        }
-        prevMapSize = map.size();
-        for (int j = s.length() - 4; j >= 0; j--) {
-            final int jj = j;
-            if (s.charAt(j) == 'u') {
-                map.put(Pair.of(4, j), dp(map, 3, jj));
-            }
-        }
-        if (map.size() == prevMapSize) {
-            return new Result<>(i, List.of(0));
-        }
-        prevMapSize = map.size();
-        for (int j = s.length() - 5; j >= 0; j--) {
-            final int jj = j;
-            if (s.charAt(j) == 'k') {
-                map.put(Pair.of(5, j), dp(map, 4, jj));
-            }
-        }
-        if (map.size() == prevMapSize) {
-            return new Result<>(i, List.of(0));
-        }
-        prevMapSize = map.size();
-        for (int j = s.length() - 6; j >= 0; j--) {
-            final int jj = j;
-            if (s.charAt(j) == 'o') {
-                map.put(Pair.of(6, j), dp(map, 5, jj));
-            }
-        }
-        if (map.size() == prevMapSize) {
-            return new Result<>(i, List.of(0));
-        }
-        prevMapSize = map.size();
-        for (int j = s.length() - 7; j >= 0; j--) {
-            final int jj = j;
-            if (s.charAt(j) == 'h') {
-                map.put(Pair.of(7, j), dp(map, 6, jj));
-            }
-        }
-        if (map.size() == prevMapSize) {
-            return new Result<>(i, List.of(0));
-        }
-        prevMapSize = map.size();
-        for (int j = s.length() - 8; j >= 0; j--) {
-            final int jj = j;
-            if (s.charAt(j) == 'c') {
-                map.put(Pair.of(8, j), dp(map, 7, jj));
-            }
-        }
-        if (map.size() == prevMapSize) {
-            return new Result<>(i, List.of(0));
-        }
-        final long ans = map.entrySet().stream()
-                .filter(e -> e.getKey().getOne() == 8)
-                .map(Entry::getValue)
-                .collect(summingLong(Long::valueOf));
-        return new Result<>(i, List.of(ans % MOD));
+        final int ans = dp[ch.length - 1];
+        return new Result<>(i, List.of(ans));
     }
 
-    private long dp(final Map<Pair<Integer, Integer>, Long> map, final int size, final int jj) {
-        return map.entrySet().stream()
-                .filter(e -> e.getKey().getOne() == size && e.getKey().getTwo() > jj)
-                .map(Entry::getValue)
-                .collect(summingLong(Long::valueOf));
-    }
-    
     private void output(final List<Result<?>> results) {
         results.forEach(r -> this.out.println(
                 r.values.stream().map(Object::toString).collect(joining(" "))));
@@ -219,35 +135,6 @@ public class Main {
 
         public Result(final int caseNumber, final List<T> values) {
             this.values = values;
-        }
-    }
-    
-    private static final class Pair<L, R> {
-        private final L one;
-        private final R two;
-
-        private Pair(final L one, final R two) {
-            this.one = one;
-            this.two = two;
-        }
-
-        public static <L, R> Pair<L, R> of(final L one, final R two) {
-            return new Pair<>(one, two);
-        }
-
-        public L getOne() {
-            return one;
-        }
-        
-        public R getTwo() {
-            return two;
-        }
-
-        @Override
-        public String toString() {
-            final StringBuilder builder = new StringBuilder();
-            builder.append("Pair [one=").append(one).append(", two=").append(two).append("]");
-            return builder.toString();
         }
     }
 }
