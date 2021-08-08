@@ -4,7 +4,9 @@ import static java.util.Arrays.asList;
 import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toList;
 
+import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
+import java.io.Closeable;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -14,7 +16,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
-import java.util.Scanner;
+import java.util.StringTokenizer;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 
@@ -43,17 +45,17 @@ public class ${class_name} {
         System.out.println(supplier.get());
     }
     
-    private Result<?> handleTestCase(final Scanner sc, final Integer i) {
+    private Result<?> handleTestCase(final FastScanner sc, final Integer i) {
         return new Result<>(i, List.of(""));
     }
     
     private void output(final List<Result<?>> results) {
-        results.forEach(r -> this.out.println(
-                r.values.stream().map(Object::toString).collect(joining(" "))));
+        results.forEach(r ->
+            r.values.stream().map(Object::toString).forEach(this.out::println));
     }
     
-    public void solve() throws IOException {
-        try (final Scanner sc = new Scanner(new InputStreamReader(this.in))) {
+    public void solve() {
+        try (final FastScanner sc = new FastScanner(this.in)) {
             final int numberOfTestCases;
             if (sample) {
                 numberOfTestCases = sc.nextInt();
@@ -113,37 +115,66 @@ public class ${class_name} {
     }
 
     private static boolean isSample() {
-        return "sample".equals(System.getProperty("atcoder"));
+        try {
+            return "sample".equals(System.getProperty("atcoder"));
+        } catch (final SecurityException e) {
+            return false;
+        }
     }
+
+    private static final class FastScanner implements Closeable {
+        private final BufferedReader br;
+        private StringTokenizer st;
+        
+        public FastScanner(final InputStream in) {
+            this.br = new BufferedReader(new InputStreamReader(in));
+            st = new StringTokenizer("");
+        }
+        
+        public String next() {
+            while (!st.hasMoreTokens()) {
+                try {
+                    st = new StringTokenizer(br.readLine());
+                } catch (final IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            return st.nextToken();
+        }
     
+        public int nextInt() {
+            return Integer.parseInt(next());
+        }
+        
+        @SuppressWarnings("unused")
+        public int[] nextIntArray(final int n) {
+            final int[] a = new int[n];
+            for (int j = 0; j < n; j++) {
+                a[j] = nextInt();
+            }
+            return a;
+        }
+        
+        @SuppressWarnings("unused")
+        public long nextLong() {
+            return Long.parseLong(next());
+        }
+
+        @Override
+        public void close() {
+            try {
+                this.br.close();
+            } catch (final IOException e) {
+                // ignore
+            }
+        }
+    }
+ 
     private static final class Result<T> {
         private final List<T> values;
 
         public Result(final int caseNumber, final List<T> values) {
             this.values = values;
-        }
-    }
-    
-    @SuppressWarnings("unused")
-    private static final class Pair<L, R> {
-        private final L one;
-        private final R two;
-
-        private Pair(final L one, final R two) {
-            this.one = one;
-            this.two = two;
-        }
-
-        public static <L, R> Pair<L, R> of(final L one, final R two) {
-            return new Pair<>(one, two);
-        }
-
-        public L getOne() {
-            return one;
-        }
-        
-        public R getTwo() {
-            return two;
         }
     }
 }
