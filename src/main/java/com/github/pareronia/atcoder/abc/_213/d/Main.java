@@ -4,7 +4,9 @@ import static java.util.Arrays.asList;
 import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toList;
 
+import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
+import java.io.Closeable;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -16,7 +18,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Scanner;
+import java.util.StringTokenizer;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 
@@ -45,26 +47,17 @@ public class Main {
         System.out.println(supplier.get());
     }
     
-    private List<Integer> bfs(final List<List<Integer>> map) {
-        final List<Integer> path = new ArrayList<>();
-        Integer next = 1;
-        while (true) {
-            path.add(next);
-            for (final List<Integer> v : map) {
-                v.remove(next);
-            }
-            final List<Integer> c = map.get(next);
-            if (!c.isEmpty()) {
-                next = c.get(0);
-            } else if (next == 1) {
-                return path;
-            } else {
-                next = path.get(path.indexOf(next) - 1);
+    private void dfs(final List<List<Integer>> map, final List<Integer> path, final int curr, final int prev) {
+        path.add(curr);
+        for (final Integer next : map.get(curr)) {
+            if (next != prev) {
+                dfs(map, path, next, curr);
+                path.add(curr);
             }
         }
     }
     
-    private Result<?> handleTestCase(final Scanner sc, final Integer i) {
+    private Result<?> handleTestCase(final FastScanner sc, final Integer i) {
         final int n = sc.nextInt();
         final List<List<Integer>> map = new ArrayList<>();
         for (int j = 0; j <= n; j++) {
@@ -79,8 +72,8 @@ public class Main {
         for (int j = 0; j <= n; j++) {
             Collections.sort(map.get(j));
         }
-        log(() -> map);
-        final List<Integer> ans = bfs(map);
+        final List<Integer> ans = new ArrayList<>();
+        dfs(map, ans, 1, -1);
         return new Result<>(i, List.of(ans.stream()
                                     .map(String::valueOf)
                                     .collect(joining(" "))));
@@ -92,7 +85,7 @@ public class Main {
     }
     
     public void solve() throws IOException {
-        try (final Scanner sc = new Scanner(new InputStreamReader(this.in))) {
+        try (final FastScanner sc = new FastScanner(this.in)) {
             final int numberOfTestCases;
             if (sample) {
                 numberOfTestCases = sc.nextInt();
@@ -152,7 +145,59 @@ public class Main {
     }
 
     private static boolean isSample() {
-        return "sample".equals(System.getProperty("atcoder"));
+        try {
+            return "sample".equals(System.getProperty("atcoder"));
+        } catch (final SecurityException e) {
+            return false;
+        }
+    }
+
+    private static final class FastScanner implements Closeable {
+        private final BufferedReader br;
+        private StringTokenizer st;
+        
+        public FastScanner(final InputStream in) {
+            this.br = new BufferedReader(new InputStreamReader(in));
+            st = new StringTokenizer("");
+        }
+        
+        public String next() {
+            while (!st.hasMoreTokens()) {
+                try {
+                    st = new StringTokenizer(br.readLine());
+                } catch (final IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            return st.nextToken();
+        }
+    
+        public int nextInt() {
+            return Integer.parseInt(next());
+        }
+        
+        @SuppressWarnings("unused")
+        public int[] nextIntArray(final int n) {
+            final int[] a = new int[n];
+            for (int j = 0; j < n; j++) {
+                a[j] = nextInt();
+            }
+            return a;
+        }
+        
+        @SuppressWarnings("unused")
+        public long nextLong() {
+            return Long.parseLong(next());
+        }
+
+        @Override
+        public void close() {
+            try {
+                this.br.close();
+            } catch (final IOException e) {
+                // ignore
+            }
+        }
     }
     
     private static final class Result<T> {
@@ -160,29 +205,6 @@ public class Main {
 
         public Result(final int caseNumber, final List<T> values) {
             this.values = values;
-        }
-    }
-    
-    @SuppressWarnings("unused")
-    private static final class Pair<L, R> {
-        private final L one;
-        private final R two;
-
-        private Pair(final L one, final R two) {
-            this.one = one;
-            this.two = two;
-        }
-
-        public static <L, R> Pair<L, R> of(final L one, final R two) {
-            return new Pair<>(one, two);
-        }
-
-        public L getOne() {
-            return one;
-        }
-        
-        public R getTwo() {
-            return two;
         }
     }
 }
