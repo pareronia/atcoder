@@ -1,8 +1,6 @@
 package com.github.pareronia.atcoder.abc._213.e;
 
 import static java.util.Arrays.asList;
-import static java.util.stream.Collectors.joining;
-import static java.util.stream.Collectors.toList;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
@@ -18,13 +16,11 @@ import java.nio.file.Paths;
 import java.util.ArrayDeque;
 import java.util.Arrays;
 import java.util.Deque;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 import java.util.StringTokenizer;
 import java.util.function.Supplier;
-import java.util.stream.Stream;
 
 /**
  * E - Stronger Takahashi
@@ -49,6 +45,7 @@ public class Main {
         this.out = out;
     }
     
+    @SuppressWarnings("unused")
     private void log(final Supplier<Object> supplier) {
         if (!sample) {
             return;
@@ -56,9 +53,7 @@ public class Main {
         System.out.println(supplier.get());
     }
     
-    private boolean inBounds(final char[][] g, final Pair<Integer, Integer> pos) {
-        final int r = pos.getOne();
-        final int c = pos.getTwo();
+    private boolean inBounds(final char[][] g, final int r, final int c) {
         return (r >= 0 && r < g.length && c >= 0 && c < g[0].length);
     }
     
@@ -68,100 +63,64 @@ public class Main {
             Arrays.fill(dist[i], Integer.MAX_VALUE);
         }
         dist[0][0] = 0;
+        final boolean[][] seen = new boolean[g.length][g[0].length];
         final Pair<Integer, Integer> start = Pair.of(0,  0);
         final Pair<Integer, Integer> end = Pair.of(g.length - 1,  g[0].length - 1);
-        final Deque<Pair<Pair<Integer, Integer>, Integer>> queue = new ArrayDeque<>();
-        queue.add(Pair.of(start, 0));
+        final Deque<Pair<Integer, Integer>> queue = new ArrayDeque<>();
+        queue.add(start);
         while (!queue.isEmpty()) {
-            final Pair<Pair<Integer, Integer>, Integer> last = queue.poll();
-            final Pair<Integer, Integer> pos = last.getOne();
-            if (end.equals(pos)) {
+            final Pair<Integer, Integer> last = queue.poll();
+            if (end.equals(last)) {
                 return dist;
             }
-            if (dist[pos.getOne()][pos.getTwo()] != last.getTwo()) {
+            final int r = last.getOne();
+            final int c = last.getTwo();
+            if (seen[r][c]) {
                 continue;
             }
-            for (final Pair<Integer, Integer> rc : NESW) {
-                final Pair<Integer, Integer> p = Pair.of(
-                        pos.getOne() + rc.getOne(),
-                        pos.getTwo() + rc.getTwo());
-                if (!inBounds(g, p)) {
+            seen[r][c] = true;
+            for (final Pair<Integer, Integer> d : NESW) {
+                final int nr = r + d.getOne();
+                final int nc = c + d.getTwo();
+                if (!inBounds(g, nr, nc)) {
                     continue;
                 }
-                if (g[p.getOne()][p.getTwo()] == '.') {
-                    if (last.getTwo() < dist[p.getOne()][p.getTwo()]) {
-                        dist[p.getOne()][p.getTwo()] = last.getTwo();
-                        queue.addFirst(Pair.of(p, last.getTwo()));
+                if (g[nr][nc] != '.') {
+                    continue;
+                }
+                final int alt = dist[r][c];
+                if (alt < dist[nr][nc]) {
+                    dist[nr][nc] = alt;
+                    queue.addFirst(Pair.of(nr, nc));
+                }
+            }
+            // .***.
+            // *****
+            // **X**
+            // *****
+            // .***.
+            for (int dr = -2; dr <= 2; dr++) {
+                for (int dc = -2; dc <= 2; dc++) {
+                    if (Math.abs(dr) + Math.abs(dc) > 3) {
+                        continue;
                     }
-                } else {
-                    final Set<Pair<Integer, Integer>> pp = new HashSet<>();
-                    if (N.equals(rc)) {
-                        pp.add(Pair.of(p.getOne() - 1, p.getTwo()));
-                        pp.add(Pair.of(p.getOne() - 1, p.getTwo() - 1));
-                        pp.add(Pair.of(p.getOne(), p.getTwo() - 1));
-                        pp.add(Pair.of(p.getOne() - 1, p.getTwo() + 1));
-                        pp.add(Pair.of(p.getOne(), p.getTwo() + 1));
+                    final int nr = r + dr;
+                    final int nc = c + dc;
+                    if (!inBounds(g, nr, nc)) {
+                        continue;
                     }
-                    if (E.equals(rc)) {
-                        pp.add(Pair.of(p.getOne() - 1, p.getTwo()));
-                        pp.add(Pair.of(p.getOne() - 1, p.getTwo() + 1));
-                        pp.add(Pair.of(p.getOne(), p.getTwo() + 1));
-                        pp.add(Pair.of(p.getOne() + 1, p.getTwo() + 1));
-                        pp.add(Pair.of(p.getOne() + 1, p.getTwo()));
+                    final int alt = dist[r][c] + 1;
+                    if (alt < dist[nr][nc]) {
+                        dist[nr][nc] = alt;
+                        queue.addLast(Pair.of(nr, nc));
                     }
-                    if (S.equals(rc)) {
-                        pp.add(Pair.of(p.getOne(), p.getTwo() + 1));
-                        pp.add(Pair.of(p.getOne() + 1, p.getTwo()));
-                        pp.add(Pair.of(p.getOne(), p.getTwo() - 1));
-                        pp.add(Pair.of(p.getOne() + 1, p.getTwo()));
-                        pp.add(Pair.of(p.getOne() + 1, p.getTwo() - 1));
-                    }
-                    if (W.equals(rc)) {
-                        pp.add(Pair.of(p.getOne() + 1, p.getTwo()));
-                        pp.add(Pair.of(p.getOne() + 1, p.getTwo() - 1));
-                        pp.add(Pair.of(p.getOne(), p.getTwo() - 1));
-                        pp.add(Pair.of(p.getOne() - 1, p.getTwo() - 1));
-                        pp.add(Pair.of(p.getOne() - 1, p.getTwo()));
-                    }
-                    pp.stream()
-                            .filter(x -> inBounds(g, x))
-                            .forEach(p1 -> {
-                                if (last.getTwo() + 1 < dist[p1.getOne()][p1.getTwo()]) {
-                                    dist[p1.getOne()][p1.getTwo()] = last.getTwo() + 1;
-                                    queue.addLast(Pair.of(p1, last.getTwo() + 1));
-                                }
-                            });
                 }
             }
         }
         throw new IllegalStateException("Unsolvable");
     }
     
-    private void printGrid(final int[][] grid) {
-        Arrays.stream(grid).forEach(r ->
-                log(() -> Arrays.stream(r)
-                        .mapToObj(Integer::valueOf)
-                        .map(String::valueOf)
-                        .map(s -> {
-                            if ("2147483647".equals(s)) {
-                                return String.valueOf('\u221E');
-                            } else {
-                                return s;
-                            }
-                        })
-                        .collect(joining(" "))));
-    }
-    
-    private void printGrid(final char[][] grid) {
-        Arrays.stream(grid).forEach(r ->
-                log(() -> {
-                    return Stream.iterate(0, i -> i < r.length, i -> i + 1)
-                           .map(i -> String.valueOf(r[i]))
-                           .collect(joining(" "));
-                }));
-    }
-    
-    private Result<?> handleTestCase(final FastScanner sc, final Integer i) {
+    private void handleTestCase(final FastScanner sc, final Integer i) {
         final int h = sc.nextInt();
         final int w = sc.nextInt();
         final char[][] g = new char[h][w];
@@ -169,16 +128,7 @@ public class Main {
             g[j] = sc.next().toCharArray();
         }
         final int[][] ans = bfs(g);
-        if (this.sample && h <= 10) {
-            printGrid(g);
-            printGrid(ans);
-        }
-        return new Result<>(i, List.of(ans[h - 1][w - 1]));
-    }
-    
-    private void output(final List<Result<?>> results) {
-        results.forEach(r ->
-            r.values.stream().map(Object::toString).forEach(this.out::println));
+        this.out.println(ans[h - 1][w - 1]);
     }
     
     public void solve() {
@@ -189,11 +139,9 @@ public class Main {
             } else {
                 numberOfTestCases = 1;
             }
-            final List<Result<?>> results =
-                    Stream.iterate(1, i -> i <= numberOfTestCases, i -> i + 1)
-                            .map(i -> handleTestCase(sc, i))
-                            .collect(toList());
-            output(results);
+            for (int i = 0; i < numberOfTestCases; i++) {
+                handleTestCase(sc, i);
+            }
         }
     }
 
@@ -344,14 +292,6 @@ public class Main {
         
         public R getTwo() {
             return two;
-        }
-    }
-    
-    private static final class Result<T> {
-        private final List<T> values;
-
-        public Result(final int caseNumber, final List<T> values) {
-            this.values = values;
         }
     }
 }
