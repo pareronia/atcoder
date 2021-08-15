@@ -5,18 +5,22 @@ import static java.util.Arrays.asList;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
+import java.io.BufferedWriter;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.URISyntaxException;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.attribute.FileAttribute;
 import java.util.Iterator;
 import java.util.List;
 import java.util.function.Function;
@@ -41,8 +45,11 @@ public abstract class MainTestBase<T> {
     }
     
     private Iterator<File> allInputFiles() throws URISyntaxException {
-        final File folder
-                = Paths.get(this.klass.getResource("in").toURI()).toFile();
+        final URL resource = this.klass.getResource("in");
+        if (resource == null) {
+            return Stream.<File> empty().iterator();
+        }
+        final File folder = Paths.get(resource.toURI()).toFile();
         return Stream.of(folder.listFiles())
                 .filter(f -> f.getName().endsWith(".txt"))
                 .iterator();
@@ -82,5 +89,20 @@ public abstract class MainTestBase<T> {
     	final Method solve = this.klass.getDeclaredMethod("solve");
     	solve.invoke(solution);
         return asList(baos.toString().split("\\r?\\n"));
+    }
+    
+    protected List<String> runWithTempFile(final ThrowingConsumer<BufferedWriter> writer) throws Throwable {
+        final Path temp = createTempFile();
+        try (final BufferedWriter theWriter = Files.newBufferedWriter(temp)) {
+           writer.accept(theWriter);
+        }
+        return run(Files.newInputStream(temp));
+    }
+
+    protected Path createTempFile() throws IOException {
+        final FileAttribute<?>[] attrs = new FileAttribute[] {};
+        final Path temp = Files.createTempFile(null, null, attrs);
+        temp.toFile().deleteOnExit();
+        return temp;
     }
 }
