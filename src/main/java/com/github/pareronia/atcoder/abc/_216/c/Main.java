@@ -48,17 +48,14 @@ public class Main {
         final long n = sc.nextLong();
         long nn = n;
         final Deque<Character> q = new ArrayDeque<>();
-        while (nn > 1) {
+        while (nn > 0) {
             if (nn % 2 == 0) {
                 nn /= 2;
                 q.addFirst('B');
             } else {
-                nn -= 1;
+                nn--;
                 q.addFirst('A');
             }
-        }
-        if (nn == 1) {
-            q.addFirst('A');
         }
         q.iterator().forEachRemaining(this.out::print);
         this.out.println();
