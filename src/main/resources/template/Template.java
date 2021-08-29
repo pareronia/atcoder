@@ -1,8 +1,6 @@
 package ${package};
 
 import static java.util.Arrays.asList;
-import static java.util.stream.Collectors.joining;
-import static java.util.stream.Collectors.toList;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
@@ -18,7 +16,6 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.StringTokenizer;
 import java.util.function.Supplier;
-import java.util.stream.Stream;
 
 /**
  * ${name}
@@ -45,13 +42,8 @@ public class ${class_name} {
         System.out.println(supplier.get());
     }
     
-    private Result<?> handleTestCase(final FastScanner sc, final Integer i) {
-        return new Result<>(i, List.of(""));
-    }
-    
-    private void output(final List<Result<?>> results) {
-        results.forEach(r ->
-            r.values.stream().map(Object::toString).forEach(this.out::println));
+    private void handleTestCase(final FastScanner sc, final Integer i) {
+        // TODO
     }
     
     public void solve() {
@@ -62,11 +54,9 @@ public class ${class_name} {
             } else {
                 numberOfTestCases = 1;
             }
-            final List<Result<?>> results =
-                    Stream.iterate(1, i -> i <= numberOfTestCases, i -> i + 1)
-                            .map(i -> handleTestCase(sc, i))
-                            .collect(toList());
-            output(results);
+            for (int i = 1; i <= numberOfTestCases; i++) {
+                handleTestCase(sc, i);
+            }
         }
     }
 
@@ -167,14 +157,6 @@ public class ${class_name} {
             } catch (final IOException e) {
                 // ignore
             }
-        }
-    }
- 
-    private static final class Result<T> {
-        private final List<T> values;
-
-        public Result(final int caseNumber, final List<T> values) {
-            this.values = values;
         }
     }
 }
