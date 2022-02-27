@@ -87,7 +87,7 @@ public class Main {
             final String unit;
             if (timeSpent < 1_000) {
                 time = timeSpent;
-                unit = "µs";
+                unit = "Âµs";
             } else if (timeSpent < 1_000_000) {
                 time = timeSpent / 1_000.0;
                 unit = "ms";

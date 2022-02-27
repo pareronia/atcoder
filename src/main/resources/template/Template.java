@@ -49,7 +49,7 @@ public class ${class_name} {
     public void solve() {
         try (final FastScanner sc = new FastScanner(this.in)) {
             final int numberOfTestCases;
-            if (sample) {
+            if (isSample()) {
                 numberOfTestCases = sc.nextInt();
             } else {
                 numberOfTestCases = 1;
