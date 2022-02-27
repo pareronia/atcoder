@@ -15,32 +15,21 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.Scanner;
-import java.util.function.Supplier;
 import java.util.stream.Stream;
 
 public class Main {
 
-    private final boolean sample;
     private final InputStream in;
     private final PrintStream out;
     
     public Main(
             final Boolean sample, final InputStream in, final PrintStream out) {
-        this.sample = sample;
         this.in = in;
         this.out = out;
     }
     
-    @SuppressWarnings("unused")
-    private void log(final Supplier<Object> supplier) {
-        if (!sample) {
-            return;
-        }
-        System.out.println(supplier.get());
-    }
-    
     private Result<?> handleTestCase(final Scanner sc, final Integer i) {
-        final int n = sc.nextInt();
+        sc.nextInt();
         final String s = sc.next();
         int j = 0;
         for (; j < s.length(); j ++) {
@@ -60,7 +49,7 @@ public class Main {
     public void solve() throws IOException {
         try (final Scanner sc = new Scanner(new InputStreamReader(this.in))) {
             final int numberOfTestCases;
-            if (sample) {
+            if (isSample()) {
                 numberOfTestCases = sc.nextInt();
             } else {
                 numberOfTestCases = 1;
@@ -126,29 +115,6 @@ public class Main {
 
         public Result(final int caseNumber, final List<T> values) {
             this.values = values;
-        }
-    }
-    
-    @SuppressWarnings("unused")
-    private static final class Pair<L, R> {
-        private final L one;
-        private final R two;
-
-        private Pair(final L one, final R two) {
-            this.one = one;
-            this.two = two;
-        }
-
-        public static <L, R> Pair<L, R> of(final L one, final R two) {
-            return new Pair<>(one, two);
-        }
-
-        public L getOne() {
-            return one;
-        }
-        
-        public R getTwo() {
-            return two;
         }
     }
 }

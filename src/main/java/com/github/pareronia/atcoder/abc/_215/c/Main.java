@@ -13,13 +13,11 @@ import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.StringTokenizer;
 import java.util.TreeSet;
 import java.util.function.Consumer;
-import java.util.function.Supplier;
 import java.util.stream.Collector;
 
 /**
@@ -28,32 +26,16 @@ import java.util.stream.Collector;
  */
 public class Main {
 
-    private final boolean sample;
     private final InputStream in;
     private final PrintStream out;
     
     public Main(
             final Boolean sample, final InputStream in, final PrintStream out) {
-        this.sample = sample;
         this.in = in;
         this.out = out;
     }
     
-    @SuppressWarnings("unused")
-    private void log(final Supplier<Object> supplier) {
-        if (!sample) {
-            return;
-        }
-        System.out.println(supplier.get());
-    }
-    
     private static final class Heap {
-        
-        public static List<String> list(final String s) {
-            final List<String> list = new ArrayList<>();
-            accept(s, list::add);
-            return list;
-        }
         
         public static void accept(final String s, final Consumer<String> consumer) {
             final char[] ch = s.toCharArray();
@@ -82,7 +64,6 @@ public class Main {
         ) {
             if (n == 1) {
                 // (got a new permutation)
-//                System.out.println(Arrays.toString(a));
                 consumer.accept(a);
                 return;
             }
@@ -118,7 +99,7 @@ public class Main {
     public void solve() {
         try (final FastScanner sc = new FastScanner(this.in)) {
             final int numberOfTestCases;
-            if (sample) {
+            if (isSample()) {
                 numberOfTestCases = sc.nextInt();
             } else {
                 numberOfTestCases = 1;
@@ -205,20 +186,6 @@ public class Main {
             return Integer.parseInt(next());
         }
         
-        @SuppressWarnings("unused")
-        public int[] nextIntArray(final int n) {
-            final int[] a = new int[n];
-            for (int j = 0; j < n; j++) {
-                a[j] = nextInt();
-            }
-            return a;
-        }
-        
-        @SuppressWarnings("unused")
-        public long nextLong() {
-            return Long.parseLong(next());
-        }
-
         @Override
         public void close() {
             try {
