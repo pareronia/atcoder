@@ -15,6 +15,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.StringTokenizer;
+import java.util.stream.IntStream;
 
 /**
  * C - 1111gal password
@@ -33,30 +34,21 @@ public class Main {
         this.out = out;
     }
 
-    private int add(final int a, final int b) {
-        return (a + b) % MOD;
-    }
-    
     private void handleTestCase(final FastScanner sc, final Integer i) {
         final int n = sc.nextInt();
         final int[][] dp = new int[n + 1][10];
-        dp[2][1] = 2;
-        for (int j = 2; j <= 8; j++) {
-            dp[2][j] = 3;
-        }
-        dp[2][9] = 2;
-        for (int j = 3; j <= n; j++) {
-            dp[j][1] = add(dp[j - 1][1], dp[j - 1][2]);
-            dp[j][9] = add(dp[j - 1][8], dp[j - 1][9]);
-            for (int k = 2; k <= 8; k++) {
-                dp[j][k] = add(dp[j - 1][k - 1],
-                               add(dp[j - 1][k], dp[j - 1][k + 1]));
+        IntStream.rangeClosed(1, 9).forEach(j -> dp[1][j] = 1);
+        for (int j = 2; j <= n; j++) {
+            for (int k = 1; k <= 9; k++) {
+                for (int m = Math.max(1, k - 1); m <= Math.min(9, k + 1); m++) {
+                    dp[j][k] += dp[j - 1][m];
+                    dp[j][k] %= MOD;
+                }
             }
         }
-        int ans = 0;
-        for (int j = 1; j <= 9; j++) {
-            ans = add(ans, dp[n][j]);
-        }
+        final int ans = IntStream.rangeClosed(1, 9)
+            .map(j -> dp[n][j])
+            .reduce(0, (a, b) -> (a + b) % MOD);
         this.out.println(ans);
     }
     
