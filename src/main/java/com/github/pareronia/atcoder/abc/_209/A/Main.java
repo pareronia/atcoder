@@ -18,6 +18,10 @@ import java.util.Scanner;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 
+/**
+ * A - Counting
+ * @see <a href="https://atcoder.jp/contests/abc209/tasks/abc209_a">https://atcoder.jp/contests/abc209/tasks/abc209_a</a>
+ */
 public class Main {
 
     private final boolean sample;

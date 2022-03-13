@@ -20,6 +20,10 @@ import java.util.Scanner;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 
+/**
+ * C - Colorful Candies
+ * @see <a href="https://atcoder.jp/contests/abc210/tasks/abc210_c">https://atcoder.jp/contests/abc210/tasks/abc210_c</a>
+ */
 public class Main {
 
     private final boolean sample;

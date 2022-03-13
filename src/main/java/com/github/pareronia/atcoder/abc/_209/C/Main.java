@@ -19,6 +19,10 @@ import java.util.Scanner;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 
+/**
+ * C - Not Equal
+ * @see <a href="https://atcoder.jp/contests/abc209/tasks/abc209_c">https://atcoder.jp/contests/abc209/tasks/abc209_c</a>
+ */
 public class Main {
 
     private static final long MOD = 1_000_000_007L;

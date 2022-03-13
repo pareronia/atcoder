@@ -18,6 +18,10 @@ import java.util.Scanner;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 
+/**
+ * A - Rolling Dice
+ * @see <a href="https://atcoder.jp/contests/abc208/tasks/abc208_a">https://atcoder.jp/contests/abc208/tasks/abc208_a</a>
+ */
 public class Main {
 
     private final boolean sample;

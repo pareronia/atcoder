@@ -18,6 +18,10 @@ import java.util.Scanner;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 
+/**
+ * B - Factorial Yen Coin
+ * @see <a href="https://atcoder.jp/contests/abc208/tasks/abc208_b">https://atcoder.jp/contests/abc208/tasks/abc208_b</a>
+ */
 public class Main {
 
     private final boolean sample;

@@ -19,6 +19,10 @@ import java.util.Scanner;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 
+/**
+ * A - Welcome to AtCoder
+ * @see <a href="https://atcoder.jp/contests/practice/tasks/practice_1">https://atcoder.jp/contests/practice/tasks/practice_1</a>
+ */
 public class Main {
 
     private final boolean sample;

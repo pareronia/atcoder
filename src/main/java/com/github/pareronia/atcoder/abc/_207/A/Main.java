@@ -19,6 +19,10 @@ import java.util.Scanner;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 
+/**
+ * A - Repression
+ * @see <a href="https://atcoder.jp/contests/abc207/tasks/abc207_a">https://atcoder.jp/contests/abc207/tasks/abc207_a</a>
+ */
 public class Main {
 
     private final boolean sample;

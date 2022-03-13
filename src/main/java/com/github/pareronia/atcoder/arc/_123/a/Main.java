@@ -19,6 +19,10 @@ import java.util.Scanner;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 
+/**
+ * A - Arithmetic Sequence
+ * @see <a href="https://atcoder.jp/contests/arc123/tasks/arc123_a">https://atcoder.jp/contests/arc123/tasks/arc123_a</a>
+ */
 public class Main {
 
     private final boolean sample;

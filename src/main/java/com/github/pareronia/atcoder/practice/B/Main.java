@@ -19,6 +19,10 @@ import java.util.function.BiFunction;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 
+/**
+ * B - Interactive Sorting
+ * @see <a href="https://atcoder.jp/contests/practice/tasks/practice_2">https://atcoder.jp/contests/practice/tasks/practice_2</a>
+ */
 public class Main {
 
     private final boolean sample;

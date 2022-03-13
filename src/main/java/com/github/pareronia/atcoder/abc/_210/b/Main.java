@@ -17,6 +17,10 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Stream;
 
+/**
+ * B - Bouzu Mekuri
+ * @see <a href="https://atcoder.jp/contests/abc210/tasks/abc210_b">https://atcoder.jp/contests/abc210/tasks/abc210_b</a>
+ */
 public class Main {
 
     private final InputStream in;

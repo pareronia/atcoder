@@ -18,6 +18,10 @@ import java.util.Scanner;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 
+/**
+ * B - Can you buy them all?
+ * @see <a href="https://atcoder.jp/contests/abc209/tasks/abc209_b">https://atcoder.jp/contests/abc209/tasks/abc209_b</a>
+ */
 public class Main {
 
     private final boolean sample;

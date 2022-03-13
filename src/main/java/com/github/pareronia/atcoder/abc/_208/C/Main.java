@@ -20,6 +20,10 @@ import java.util.Scanner;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 
+/**
+ * C - Fair Candy Distribution
+ * @see <a href="https://atcoder.jp/contests/abc208/tasks/abc208_c">https://atcoder.jp/contests/abc208/tasks/abc208_c</a>
+ */
 public class Main {
 
     private final boolean sample;

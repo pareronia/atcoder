@@ -18,6 +18,10 @@ import java.util.Scanner;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 
+/**
+ * B - Hydrate
+ * @see <a href="https://atcoder.jp/contests/abc207/tasks/abc207_b">https://atcoder.jp/contests/abc207/tasks/abc207_b</a>
+ */
 public class Main {
 
     private final boolean sample;

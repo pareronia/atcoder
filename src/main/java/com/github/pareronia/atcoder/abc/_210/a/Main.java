@@ -18,6 +18,10 @@ import java.util.Scanner;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 
+/**
+ * A - Cabbages
+ * @see <a href="https://atcoder.jp/contests/abc210/tasks/abc210_a">https://atcoder.jp/contests/abc210/tasks/abc210_a</a>
+ */
 public class Main {
 
     private final boolean sample;

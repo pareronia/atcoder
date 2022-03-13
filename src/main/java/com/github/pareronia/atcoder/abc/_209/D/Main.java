@@ -22,6 +22,10 @@ import java.util.Scanner;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 
+/**
+ * D - Collision
+ * @see <a href="https://atcoder.jp/contests/abc209/tasks/abc209_d">https://atcoder.jp/contests/abc209/tasks/abc209_d</a>
+ */
 public class Main {
 
     private final boolean sample;
@@ -134,7 +138,7 @@ public class Main {
             final String unit;
             if (timeSpent < 1_000) {
                 time = timeSpent;
-                unit = "µs";
+                unit = "Âµs";
             } else if (timeSpent < 1_000_000) {
                 time = timeSpent / 1_000.0;
                 unit = "ms";
