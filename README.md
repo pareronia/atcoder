@@ -62,6 +62,7 @@
 | ABC242_A | [T-shirt](https://atcoder.jp/contests/abc242/tasks/abc242_a) | [Java](src/main/java/com/github/pareronia/atcoder/abc/_242/a/Main.java) |
 | ABC242_B | [Minimize Ordering](https://atcoder.jp/contests/abc242/tasks/abc242_b) | [Java](src/main/java/com/github/pareronia/atcoder/abc/_242/b/Main.java) |
 | ABC242_C | [1111gal password](https://atcoder.jp/contests/abc242/tasks/abc242_c) | [Java](src/main/java/com/github/pareronia/atcoder/abc/_242/c/Main.java) |
+| ABC242_D | [ABC Transform](https://atcoder.jp/contests/abc242/tasks/abc242_d) | [Java](src/main/java/com/github/pareronia/atcoder/abc/_242/d/Main.java) |
 | ABC243_A | [Shampoo](https://atcoder.jp/contests/abc243/tasks/abc243_a) | [Java](src/main/java/com/github/pareronia/atcoder/abc/_243/a/Main.java) |
 | ABC243_B | [Hit and Blow](https://atcoder.jp/contests/abc243/tasks/abc243_b) | [Java](src/main/java/com/github/pareronia/atcoder/abc/_243/b/Main.java) |
 | ABC243_C | [Collision 2](https://atcoder.jp/contests/abc243/tasks/abc243_c) | [Java](src/main/java/com/github/pareronia/atcoder/abc/_243/c/Main.java) |
