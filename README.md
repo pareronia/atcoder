@@ -76,6 +76,7 @@
 | ABC244_D | [Swap Hats](https://atcoder.jp/contests/abc244/tasks/abc244_d) | [Java](src/main/java/com/github/pareronia/atcoder/abc/_244/d/Main.java) |
 | ABC244_E | [King Bombee](https://atcoder.jp/contests/abc244/tasks/abc244_e) | [Java](src/main/java/com/github/pareronia/atcoder/abc/_244/e/Main.java) |
 | ABC245_A | [Good morning](https://atcoder.jp/contests/abc245/tasks/abc245_a) | [Java](src/main/java/com/github/pareronia/atcoder/abc/_245/a/Main.java) |
+| ABC245_B | [Mex](https://atcoder.jp/contests/abc245/tasks/abc245_b) | [Java](src/main/java/com/github/pareronia/atcoder/abc/_245/b/Main.java) |
 | ARC123_A | [Arithmetic Sequence](https://atcoder.jp/contests/arc123/tasks/arc123_a) | [Java](src/main/java/com/github/pareronia/atcoder/arc/_123/a/Main.java) |
 | ARC136_A | [A ↔ BB](https://atcoder.jp/contests/arc136/tasks/arc136_a) | [Java](src/main/java/com/github/pareronia/atcoder/arc/_136/a/Main.java) |
 | ARC136_B | [Triple Shift](https://atcoder.jp/contests/arc136/tasks/arc136_b) | [Java](src/main/java/com/github/pareronia/atcoder/arc/_136/b/Main.java) |
