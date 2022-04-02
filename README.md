@@ -82,6 +82,7 @@
 | ABC246_A | [Four Points](https://atcoder.jp/contests/abc246/tasks/abc246_a) | [Java](src/main/java/com/github/pareronia/atcoder/abc/_246/a/Main.java) |
 | ABC246_B | [Get Closer](https://atcoder.jp/contests/abc246/tasks/abc246_b) | [Java](src/main/java/com/github/pareronia/atcoder/abc/_246/b/Main.java) |
 | ABC246_C | [Coupon](https://atcoder.jp/contests/abc246/tasks/abc246_c) | [Java](src/main/java/com/github/pareronia/atcoder/abc/_246/c/Main.java) |
+| ABC246_D | [2-variable Function](https://atcoder.jp/contests/abc246/tasks/abc246_d) | [Java](src/main/java/com/github/pareronia/atcoder/abc/_246/d/Main.java) |
 | ARC123_A | [Arithmetic Sequence](https://atcoder.jp/contests/arc123/tasks/arc123_a) | [Java](src/main/java/com/github/pareronia/atcoder/arc/_123/a/Main.java) |
 | ARC136_A | [A ↔ BB](https://atcoder.jp/contests/arc136/tasks/arc136_a) | [Java](src/main/java/com/github/pareronia/atcoder/arc/_136/a/Main.java) |
 | ARC136_B | [Triple Shift](https://atcoder.jp/contests/arc136/tasks/arc136_b) | [Java](src/main/java/com/github/pareronia/atcoder/arc/_136/b/Main.java) |
