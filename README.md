@@ -79,6 +79,11 @@
 | ABC245_B | [Mex](https://atcoder.jp/contests/abc245/tasks/abc245_b) | [Java](src/main/java/com/github/pareronia/atcoder/abc/_245/b/Main.java) |
 | ABC245_C | [Choose Elements](https://atcoder.jp/contests/abc245/tasks/abc245_c) | [Java](src/main/java/com/github/pareronia/atcoder/abc/_245/c/Main.java) |
 | ABC245_E | [Wrapping Chocolate](https://atcoder.jp/contests/abc245/tasks/abc245_e) | [Java](src/main/java/com/github/pareronia/atcoder/abc/_245/e/Main.java) |
+| ABC246_A | [Four Points](https://atcoder.jp/contests/abc246/tasks/abc246_a) | [Java](src/main/java/com/github/pareronia/atcoder/abc/_246/a/Main.java) |
+| ABC246_B | [Get Closer](https://atcoder.jp/contests/abc246/tasks/abc246_b) | [Java](src/main/java/com/github/pareronia/atcoder/abc/_246/b/Main.java) |
+| ABC246_C | [Coupon](https://atcoder.jp/contests/abc246/tasks/abc246_c) | [Java](src/main/java/com/github/pareronia/atcoder/abc/_246/c/Main.java) |
+| ABC246_D | [2-variable Function](https://atcoder.jp/contests/abc246/tasks/abc246_d) | [Java](src/main/java/com/github/pareronia/atcoder/abc/_246/d/Main.java) |
+| ABC246_E | [Bishop 2](https://atcoder.jp/contests/abc246/tasks/abc246_e) | [Java](src/main/java/com/github/pareronia/atcoder/abc/_246/e/Main.java) |
 | ABC247_A | [Move Right](https://atcoder.jp/contests/abc247/tasks/abc247_a) | [Java](src/main/java/com/github/pareronia/atcoder/abc/_247/a/Main.java) |
 | ABC247_B | [Unique Nicknames](https://atcoder.jp/contests/abc247/tasks/abc247_b) | [Java](src/main/java/com/github/pareronia/atcoder/abc/_247/b/Main.java) |
 | ABC247_C | [1 2 1 3 1 2 1](https://atcoder.jp/contests/abc247/tasks/abc247_c) | [Java](src/main/java/com/github/pareronia/atcoder/abc/_247/c/Main.java) |
