@@ -79,6 +79,7 @@
 | ABC245_B | [Mex](https://atcoder.jp/contests/abc245/tasks/abc245_b) | [Java](src/main/java/com/github/pareronia/atcoder/abc/_245/b/Main.java) |
 | ABC245_C | [Choose Elements](https://atcoder.jp/contests/abc245/tasks/abc245_c) | [Java](src/main/java/com/github/pareronia/atcoder/abc/_245/c/Main.java) |
 | ABC245_E | [Wrapping Chocolate](https://atcoder.jp/contests/abc245/tasks/abc245_e) | [Java](src/main/java/com/github/pareronia/atcoder/abc/_245/e/Main.java) |
+| ABC247_A | [Move Right](https://atcoder.jp/contests/abc247/tasks/abc247_a) | [Java](src/main/java/com/github/pareronia/atcoder/abc/_247/a/Main.java) |
 | ARC123_A | [Arithmetic Sequence](https://atcoder.jp/contests/arc123/tasks/arc123_a) | [Java](src/main/java/com/github/pareronia/atcoder/arc/_123/a/Main.java) |
 | ARC136_A | [A ↔ BB](https://atcoder.jp/contests/arc136/tasks/arc136_a) | [Java](src/main/java/com/github/pareronia/atcoder/arc/_136/a/Main.java) |
 | ARC136_B | [Triple Shift](https://atcoder.jp/contests/arc136/tasks/arc136_b) | [Java](src/main/java/com/github/pareronia/atcoder/arc/_136/b/Main.java) |
