@@ -88,6 +88,7 @@
 | ABC247_B | [Unique Nicknames](https://atcoder.jp/contests/abc247/tasks/abc247_b) | [Java](src/main/java/com/github/pareronia/atcoder/abc/_247/b/Main.java) |
 | ABC247_C | [1 2 1 3 1 2 1](https://atcoder.jp/contests/abc247/tasks/abc247_c) | [Java](src/main/java/com/github/pareronia/atcoder/abc/_247/c/Main.java) |
 | ABC247_D | [Cylinder](https://atcoder.jp/contests/abc247/tasks/abc247_d) | [Java](src/main/java/com/github/pareronia/atcoder/abc/_247/d/Main.java) |
+| ABC248_A | [Lacked Number](https://atcoder.jp/contests/abc248/tasks/abc248_a) | [Java](src/main/java/com/github/pareronia/atcoder/abc/_248/a/Main.java) |
 | ARC123_A | [Arithmetic Sequence](https://atcoder.jp/contests/arc123/tasks/arc123_a) | [Java](src/main/java/com/github/pareronia/atcoder/arc/_123/a/Main.java) |
 | ARC136_A | [A ↔ BB](https://atcoder.jp/contests/arc136/tasks/arc136_a) | [Java](src/main/java/com/github/pareronia/atcoder/arc/_136/a/Main.java) |
 | ARC136_B | [Triple Shift](https://atcoder.jp/contests/arc136/tasks/arc136_b) | [Java](src/main/java/com/github/pareronia/atcoder/arc/_136/b/Main.java) |
