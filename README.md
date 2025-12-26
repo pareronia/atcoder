@@ -96,6 +96,7 @@
 | ABC261_C | [NewFolder(1)](https://atcoder.jp/contests/abc261/tasks/abc261_c) | [Java](src/main/java/com/github/pareronia/atcoder/abc/_261/c/Main.java) |
 | ABC436_A | [o-padding](https://atcoder.jp/contests/abc436/tasks/abc436_a) | [Java](src/main/java/com/github/pareronia/atcoder/abc/_436/a/Main.java) |
 | ABC436_B | [Magic Square](https://atcoder.jp/contests/abc436/tasks/abc436_b) | [Java](src/main/java/com/github/pareronia/atcoder/abc/_436/b/Main.java) |
+| ABC436_C | [2x2 Placing](https://atcoder.jp/contests/abc436/tasks/abc436_c) | [Java](src/main/java/com/github/pareronia/atcoder/abc/_436/c/Main.java) |
 | ARC123_A | [Arithmetic Sequence](https://atcoder.jp/contests/arc123/tasks/arc123_a) | [Java](src/main/java/com/github/pareronia/atcoder/arc/_123/a/Main.java) |
 | ARC136_A | [A ↔ BB](https://atcoder.jp/contests/arc136/tasks/arc136_a) | [Java](src/main/java/com/github/pareronia/atcoder/arc/_136/a/Main.java) |
 | ARC136_B | [Triple Shift](https://atcoder.jp/contests/arc136/tasks/arc136_b) | [Java](src/main/java/com/github/pareronia/atcoder/arc/_136/b/Main.java) |
