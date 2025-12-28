@@ -17,7 +17,7 @@ class MainABC438DTest extends MainTestBase<Main> {
 	@Test
 	void test() throws Throwable {
         final Random rand = new Random(System.nanoTime());
-        final int n = 40_000;
+        final int n = 200_000;
         
         runWithTempFile(writer -> {
             writer.write(String.valueOf(n));

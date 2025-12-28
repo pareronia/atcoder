@@ -37,17 +37,21 @@ public class Main {
     	for (int j = 0; j < 3; j++) {
 			a[j] = sc.nextLongArray(n);
 		}
-    	final DFS dfs = new DFS(a);
-		this.out.println(dfs.dfs(2, n - 1));
+    	this.out.println(new DFS(a).dfs(2, n - 1));
     }
 
     private static class DFS {
     	private final long[][] cache;
     	private final long[][] a;
+    	private final long[] p;
 
 		private DFS(final long[][] a) {
 			this.a = a;
 			this.cache = new long[a.length][a[0].length];
+			this.p = new long[a[0].length + 1];
+			for (int i = 0; i < a[0].length; i++) {
+				p[i + 1] = p[i] + a[0][i];
+			}
 		}
     	
 		public long dfs(final int i, final int j) {
@@ -56,15 +60,9 @@ public class Main {
 			}
 			long ans = 0;
 			if (i == 0) {
-				for (int k = 0; k <= j; k++) {
-					ans += a[i][k];
-				}
-			} else {
-				long ak = a[i][j];
-				for (int k = j; k >= i; k--) {
-					ans = Math.max(ans, ak + dfs(i - 1, k - 1));
-					ak += a[i][k - 1];
-				}
+				ans = p[j + 1];
+			} else if (j >= i) {
+				ans = Math.max(a[i][j] + dfs(i, j - 1), a[i][j] + dfs(i - 1, j - 1));
 			}
 			this.cache[i][j] = ans;
 			return ans;
