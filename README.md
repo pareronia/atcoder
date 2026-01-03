@@ -106,6 +106,7 @@
 | ABC438_C | [1D puyopuyo](https://atcoder.jp/contests/abc438/tasks/abc438_c) | [Java](src/main/java/com/github/pareronia/atcoder/abc/_438/c/Main.java) |
 | ABC438_D | [Tail of Snake](https://atcoder.jp/contests/abc438/tasks/abc438_d) | [Java](src/main/java/com/github/pareronia/atcoder/abc/_438/d/Main.java) |
 | ABC439_A | [2^n - 2*n](https://atcoder.jp/contests/abc439/tasks/abc439_a) | [Java](src/main/java/com/github/pareronia/atcoder/abc/_439/a/Main.java) |
+| ABC439_B | [Happy Number](https://atcoder.jp/contests/abc439/tasks/abc439_b) | [Java](src/main/java/com/github/pareronia/atcoder/abc/_439/b/Main.java) |
 | ARC123_A | [Arithmetic Sequence](https://atcoder.jp/contests/arc123/tasks/arc123_a) | [Java](src/main/java/com/github/pareronia/atcoder/arc/_123/a/Main.java) |
 | ARC136_A | [A ↔ BB](https://atcoder.jp/contests/arc136/tasks/arc136_a) | [Java](src/main/java/com/github/pareronia/atcoder/arc/_136/a/Main.java) |
 | ARC136_B | [Triple Shift](https://atcoder.jp/contests/arc136/tasks/arc136_b) | [Java](src/main/java/com/github/pareronia/atcoder/arc/_136/b/Main.java) |
