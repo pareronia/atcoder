@@ -112,6 +112,7 @@
 | ABC442_A | [Count .](https://atcoder.jp/contests/abc442/tasks/abc442_a) | [Java](src/main/java/com/github/pareronia/atcoder/abc/_442/a/Main.java) |
 | ABC442_B | [Music Player](https://atcoder.jp/contests/abc442/tasks/abc442_b) | [Java](src/main/java/com/github/pareronia/atcoder/abc/_442/b/Main.java) |
 | ABC442_C | [Peer Review](https://atcoder.jp/contests/abc442/tasks/abc442_c) | [Java](src/main/java/com/github/pareronia/atcoder/abc/_442/c/Main.java) |
+| ABC442_D | [Swap and Range Sum](https://atcoder.jp/contests/abc442/tasks/abc442_d) | [Java](src/main/java/com/github/pareronia/atcoder/abc/_442/d/Main.java) |
 | ARC123_A | [Arithmetic Sequence](https://atcoder.jp/contests/arc123/tasks/arc123_a) | [Java](src/main/java/com/github/pareronia/atcoder/arc/_123/a/Main.java) |
 | ARC136_A | [A ↔ BB](https://atcoder.jp/contests/arc136/tasks/arc136_a) | [Java](src/main/java/com/github/pareronia/atcoder/arc/_136/a/Main.java) |
 | ARC136_B | [Triple Shift](https://atcoder.jp/contests/arc136/tasks/arc136_b) | [Java](src/main/java/com/github/pareronia/atcoder/arc/_136/b/Main.java) |
