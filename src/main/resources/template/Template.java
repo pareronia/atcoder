@@ -42,18 +42,13 @@ public class ${class_name} {
         System.out.println(supplier.get());
     }
     
-    private void handleTestCase(final FastScanner sc, final Integer i) {
+    private void handleTestCase(final FastScanner sc, final int i) {
         // TODO
     }
     
     public void solve() {
         try (final FastScanner sc = new FastScanner(this.in)) {
-            final int numberOfTestCases;
-            if (isSample()) {
-                numberOfTestCases = sc.nextInt();
-            } else {
-                numberOfTestCases = 1;
-            }
+            final int numberOfTestCases = isSample() ? sc.nextInt() : 1;
             for (int i = 1; i <= numberOfTestCases; i++) {
                 handleTestCase(sc, i);
             }
