@@ -110,6 +110,7 @@
 | ABC440_A | [Octave](https://atcoder.jp/contests/abc440/tasks/abc440_a) | [Java](src/main/java/com/github/pareronia/atcoder/abc/_440/a/Main.java) |
 | ABC440_B | [Trifecta](https://atcoder.jp/contests/abc440/tasks/abc440_b) | [Java](src/main/java/com/github/pareronia/atcoder/abc/_440/b/Main.java) |
 | ABC442_A | [Count .](https://atcoder.jp/contests/abc442/tasks/abc442_a) | [Java](src/main/java/com/github/pareronia/atcoder/abc/_442/a/Main.java) |
+| ABC442_B | [Music Player](https://atcoder.jp/contests/abc442/tasks/abc442_b) | [Java](src/main/java/com/github/pareronia/atcoder/abc/_442/b/Main.java) |
 | ARC123_A | [Arithmetic Sequence](https://atcoder.jp/contests/arc123/tasks/arc123_a) | [Java](src/main/java/com/github/pareronia/atcoder/arc/_123/a/Main.java) |
 | ARC136_A | [A ↔ BB](https://atcoder.jp/contests/arc136/tasks/arc136_a) | [Java](src/main/java/com/github/pareronia/atcoder/arc/_136/a/Main.java) |
 | ARC136_B | [Triple Shift](https://atcoder.jp/contests/arc136/tasks/arc136_b) | [Java](src/main/java/com/github/pareronia/atcoder/arc/_136/b/Main.java) |
