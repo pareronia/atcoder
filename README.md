@@ -109,6 +109,7 @@
 | ABC439_B | [Happy Number](https://atcoder.jp/contests/abc439/tasks/abc439_b) | [Java](src/main/java/com/github/pareronia/atcoder/abc/_439/b/Main.java) |
 | ABC440_A | [Octave](https://atcoder.jp/contests/abc440/tasks/abc440_a) | [Java](src/main/java/com/github/pareronia/atcoder/abc/_440/a/Main.java) |
 | ABC440_B | [Trifecta](https://atcoder.jp/contests/abc440/tasks/abc440_b) | [Java](src/main/java/com/github/pareronia/atcoder/abc/_440/b/Main.java) |
+| ABC441_A | [Black Square](https://atcoder.jp/contests/abc441/tasks/abc441_a) | [Java](src/main/java/com/github/pareronia/atcoder/abc/_441/a/Main.java) |
 | ABC442_A | [Count .](https://atcoder.jp/contests/abc442/tasks/abc442_a) | [Java](src/main/java/com/github/pareronia/atcoder/abc/_442/a/Main.java) |
 | ABC442_B | [Music Player](https://atcoder.jp/contests/abc442/tasks/abc442_b) | [Java](src/main/java/com/github/pareronia/atcoder/abc/_442/b/Main.java) |
 | ABC442_C | [Peer Review](https://atcoder.jp/contests/abc442/tasks/abc442_c) | [Java](src/main/java/com/github/pareronia/atcoder/abc/_442/c/Main.java) |
